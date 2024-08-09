@@ -14,7 +14,7 @@
 4. Экран профиль с отображением имени пользователя и возможностью выйти из аккаунта.
 
 <img src="https://github.com/user-attachments/assets/290c170d-f6e0-401b-ad2e-c685a70b75ea" width="240" height="460">
-<img src="https://github.com/user-attachments/assets/bcc56e22-12d8-49bc-be09-741e301d469e" width="240" height="460">
+<img src="https://github.com/user-attachments/assets/bcc56e22-12d8-49bc-be09-741e301d469e" width="240" height="460"> <br> 
 <img src="https://github.com/user-attachments/assets/740a4911-531c-4193-a38b-d97044742de2" width="240" height="460">
 <img src="https://github.com/user-attachments/assets/012ded19-ef6c-4451-a289-6e35cccaf443" width="240" height="460">
 
