@@ -1,9 +1,7 @@
-import 'package:my_store/models/user.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
-import 'package:my_store/models/product.dart';
 
-class DatabaseService {
+class DatabaseServiceBase {
   Database? _database;
 
   Future<Database> get database async {
@@ -40,56 +38,6 @@ class DatabaseService {
         isFavorite INTEGER
       )
     ''');
-  }
-
-  //** Users **//
-  Future<void> insertUser(User user) async {
-    final db = await database;
-    await db.insert('users', user.toMap(),
-        conflictAlgorithm: ConflictAlgorithm.replace);
-  }
-
-  Future<User?> getUser(String username, String password) async {
-    final db = await database;
-    final data = await db.query(
-      'users',
-      where: 'username = ? AND password = ?',
-      whereArgs: [username, password],
-    );
-
-    if (data.isNotEmpty) {
-      return User.fromMap(data.first);
-    }
-    return null;
-  }
-
-  //** Products **//
-  Future<void> insertProduct(Product product) async {
-    final db = await database;
-    await db.insert(
-      'products',
-      product.toMap(),
-      conflictAlgorithm: ConflictAlgorithm.replace,
-    );
-  }
-
-  Future<List<Product>> getProducts() async {
-    final db = await database;
-    final data = await db.query('products');
-    return List.generate(
-      data.length,
-      (i) => Product.fromMap(data[i]),
-    );
-  }
-
-  Future<void> updateProduct(Product product) async {
-    final db = await database;
-    await db.update(
-      'products',
-      product.toMap(),
-      where: 'id = ?',
-      whereArgs: [product.id],
-    );
   }
 
 // Future<void> clearDatabase() async {

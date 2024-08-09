@@ -1,6 +1,6 @@
 import 'dart:developer';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:my_store/core/services/database_service.dart';
+import 'package:my_store/core/services/user_database_service.dart';
 import 'package:my_store/models/user.dart';
 
 final userProvider = StateNotifierProvider<UserNotifier, User?>((ref) {
@@ -13,7 +13,7 @@ class UserNotifier extends StateNotifier<User?> {
   Future<void> register(String username, String password) async {
     try{
       final user = User(username: username, password: password);
-      await DatabaseService().insertUser(user);
+      await UserDatabaseService().insertUser(user);
       state = user;
     }catch (e) {
 
@@ -22,7 +22,7 @@ class UserNotifier extends StateNotifier<User?> {
   }
 
   Future<bool> login(String username, String password) async {
-    final user = await DatabaseService().getUser(username, password);
+    final user = await UserDatabaseService().getUser(username, password);
     if (user != null) {
       state = user;
       return true;

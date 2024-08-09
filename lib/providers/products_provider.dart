@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:developer';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:my_store/core/services/database_service.dart';
+import 'package:my_store/core/services/product_database_service.dart';
 import 'package:my_store/models/product.dart';
 
 final productsProvider =
@@ -20,7 +20,7 @@ class ProductNotifier extends StateNotifier<List<Product>> {
     // await DatabaseService().clearDatabase();
 
     try {
-      final dbProducts = await DatabaseService().getProducts();
+      final dbProducts = await ProductDatabaseService().getProducts();
       if (dbProducts.isEmpty) {
         final jsonString =
             await rootBundle.loadString('assets/json/dummy_data.json');
@@ -29,7 +29,7 @@ class ProductNotifier extends StateNotifier<List<Product>> {
             jsonData.map((data) => Product.fromMap(data)).toList();
 
         for (var product in products) {
-          await DatabaseService().insertProduct(product);
+          await ProductDatabaseService().insertProduct(product);
         }
         _allProducts = products;
         state = products;
@@ -52,7 +52,7 @@ class ProductNotifier extends StateNotifier<List<Product>> {
         isFavorite: !product.isFavorite,
       );
 
-      await DatabaseService().updateProduct(updatedProduct);
+      await ProductDatabaseService().updateProduct(updatedProduct);
 
       state = [
         for (final product in state)
