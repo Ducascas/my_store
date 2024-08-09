@@ -4,7 +4,7 @@
 
 ## Описание
 
-Приложение интернет магазина, реализованое на 4 экранах. 
+Приложение интернет магазина, реализованное на 4 экранах. 
 
 Описание экранов:
 
@@ -13,7 +13,12 @@
 3. Экран избранных товаров, откуда можно удалить товар.
 4. Экран профиль с отображением имени пользователя и возможностью выйти из аккаунта.
 
+<img src="https://github.com/Ducascas/online_store/blob/master/assets/login_screen.png" width="240" height="600">
+<img src="https://github.com/Ducascas/online_store/blob/master/assets/home_screen.png" width="240" height="600">
+<img src="https://github.com/Ducascas/online_store/blob/master/assets/favorites_screen.png" width="240" height="600">
+<img src="https://github.com/Ducascas/online_store/blob/master/assets/profile_screen.png" width="240" height="600">
+
 ## Особенности
-Приложение использует Riverpod для управления состоянием приложения.
-Для хранения данных используется локальная реляционная БД SQFLite.
-Для навигации между экранами используется пакет go_router.
+- Приложение использует Riverpod для управления состоянием приложения.
+- Для хранения данных используется локальная реляционная БД SQFLite.
+- Для навигации между экранами используется пакет go_router.
